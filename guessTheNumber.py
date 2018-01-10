@@ -1,3 +1,6 @@
+#Created by Scott Kim
+#Lab1 Part 1
+
 import random
 
 rNumber = random.randrange(1, 10)

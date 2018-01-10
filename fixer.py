@@ -1,9 +1,13 @@
+# Created by Scott Kim
+# Lab1 Part 4
+# This program will retreive the latest USD to CAD exchange rate and user will be able to exchange either from USD to CAD or CAD to USD
+
 import requests
 import sys
 
 
 base_url = 'https://api.fixer.io/latest?base=USD'
-
+# http://www.hashbangcode.com/blog/stopping-code-execution-python request exception
 try:
     data = requests.get(base_url).json()
     cad = data["rates"]["CAD"]
