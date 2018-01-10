@@ -1,8 +1,16 @@
 import requests
+import sys
+
+
 base_url = 'https://api.fixer.io/latest?base=USD'
-data = requests.get(base_url).json()
-cad = data["rates"]["CAD"]
-print("The latest exchange rate is 1 USD to " +str(cad)+ " CAD\n")
+
+try:
+    data = requests.get(base_url).json()
+    cad = data["rates"]["CAD"]
+    print("The latest exchange rate is 1 USD to " +str(cad)+ " CAD\n")
+except requests.exceptions.RequestException as e:
+    print(e)
+    sys.exit()
 
 
 while True:
@@ -19,19 +27,19 @@ while True:
 if option == 1:
     while True:
         try:
-            xcFrom = float(input("Enter USD to exchange to CAD: $"))
+            xcFrom = float(input("\nEnter USD to exchange to CAD: $"))
             xcTo = xcFrom * cad
             print( str(round(xcFrom, 2)) + " USD is " + str(round(xcTo, 2)) + "CAD")
             break
         except ValueError:
-            print("Please enter number only\n")
+            print("Please enter number only")
 
 elif option == 2:
     while True:
         try:
-            xcFrom = float(input("Enter CAD to exchange to USD: $"))
+            xcFrom = float(input("\nEnter CAD to exchange to USD: $"))
             xcTo = xcFrom / cad
             print( str(round(xcFrom, 2)) + " CAD is " + str(round(xcTo, 2)) + " USD")
             break
         except ValueError:
-            print("Please enter number only\n")
+            print("Please enter number only")
